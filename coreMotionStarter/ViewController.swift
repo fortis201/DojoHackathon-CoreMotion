@@ -66,6 +66,9 @@ class ViewController: UIViewController {
         self.rollLabel.hidden = true
         self.yawLabel.hidden = true
         self.pitchLabel.hidden = true
+        self.rollDiffLabel.hidden = true
+        self.pitchDiffLabel.hidden = true
+        self.yawDiffLabel.hidden = true
         
         self.resultLabel.hidden = true
         self.startButtonLabel.hidden = false
@@ -83,6 +86,9 @@ class ViewController: UIViewController {
         self.rollLabel.hidden = false
         self.yawLabel.hidden = false
         self.pitchLabel.hidden = false
+        self.rollDiffLabel.hidden = false
+        self.pitchDiffLabel.hidden = false
+        self.yawDiffLabel.hidden = false
         
         self.resetButtonLabel.setTitle("Stop", forState: UIControlState.Normal)
         self.resultLabel.hidden = true
@@ -229,43 +235,7 @@ class ViewController: UIViewController {
                     self.motionManager.stopDeviceMotionUpdates()
                 }
                 
-                
-                // --=== I commented these out in case we still need them for debugging max/mins. I needed room in the console.  ===-- //
-                
-                
-                //        var dbgMaxR = 0.0
-                //        var dbgMinR = 0.0
-                //        var dbgMaxP = 0.0
-                //        var dbgMinP = 0.0
-                //        var dbgMaxY = 0.0
-                //        var dbgMinY = 0.0
-                
-                //                if rollDegrees < dbgMinR {
-                //                    dbgMinR = rollDegrees
-                //                    println("\(dbgMinR) \(dbgMaxR) \(dbgMinY) \(dbgMaxY) \(dbgMinP) \(dbgMaxP)")
-                //                }
-                //                if rollDegrees > dbgMaxR {
-                //                    dbgMaxR = rollDegrees
-                //                    println("\(dbgMinR) \(dbgMaxR) \(dbgMinY) \(dbgMaxY) \(dbgMinP) \(dbgMaxP)")
-                //                }
-                //                if yawDegrees < dbgMinY {
-                //                    dbgMinY = yawDegrees
-                //                    println("\(dbgMinR) \(dbgMaxR) \(dbgMinY) \(dbgMaxY) \(dbgMinP) \(dbgMaxP)")
-                //                }
-                //                if yawDegrees > dbgMaxY {
-                //                    dbgMaxY = yawDegrees
-                //                    println("\(dbgMinR) \(dbgMaxR) \(dbgMinY) \(dbgMaxY) \(dbgMinP) \(dbgMaxP)")
-                //                }
-                //                if pitchDegrees < dbgMinP {
-                //                    dbgMinP = pitchDegrees
-                //                    println("\(dbgMinR) \(dbgMaxR) \(dbgMinY) \(dbgMaxY) \(dbgMinP) \(dbgMaxP)")
-                //                }
-                //                if pitchDegrees > dbgMaxP {
-                //                    dbgMaxP = pitchDegrees
-                //                    println("\(dbgMinR) \(dbgMaxR) \(dbgMinY) \(dbgMaxY) \(dbgMinP) \(dbgMaxP)")
-                //                }
-                //            }
-                //        }
+
             }
         }
 
@@ -283,6 +253,9 @@ class ViewController: UIViewController {
         resultLabel.textColor = UIColor.greenColor()
         mainView.backgroundColor = UIColor.blackColor()
         
+        rollDiffLabel.hidden = true
+        pitchDiffLabel.hidden = true
+        yawDiffLabel.hidden = true
         resultLabel.hidden = true
         rollLabel.hidden = true
         yawLabel.hidden = true
