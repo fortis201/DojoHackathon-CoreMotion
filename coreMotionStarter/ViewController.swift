@@ -10,6 +10,8 @@ import UIKit
 import CoreMotion
 class ViewController: UIViewController {
     
+    @IBOutlet weak var objectiveLabel: UILabel!
+
     @IBOutlet weak var rollLabel: UILabel!
     @IBOutlet weak var pitchLabel: UILabel!
     @IBOutlet weak var yawLabel: UILabel!
@@ -19,7 +21,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var yawDiffLabel: UILabel!
     @IBOutlet weak var startButtonLabel: UIButton!
     @IBOutlet weak var resetButtonLabel: UIButton!
-
+    @IBOutlet var mainView: UIView!
+    
     var targetRoll = 0.0
     var targetPitch = 0.0
     var targetYaw = 0.0
@@ -59,6 +62,11 @@ class ViewController: UIViewController {
 //            }
     
     @IBAction func resetButtonPressed(sender: UIButton) {
+        
+        self.rollLabel.hidden = true
+        self.yawLabel.hidden = true
+        self.pitchLabel.hidden = true
+        
         self.resultLabel.hidden = true
         self.startButtonLabel.hidden = false
         sender.setTitle("Reset", forState: UIControlState.Normal)
@@ -71,6 +79,11 @@ class ViewController: UIViewController {
     }
     
     @IBAction func startButtonPressed(sender: UIButton) {
+        
+        self.rollLabel.hidden = false
+        self.yawLabel.hidden = false
+        self.pitchLabel.hidden = false
+        
         self.resetButtonLabel.setTitle("Stop", forState: UIControlState.Normal)
         self.resultLabel.hidden = true
         sender.hidden = true
@@ -122,7 +135,7 @@ class ViewController: UIViewController {
                     self.rollLabel.textColor = UIColor.yellowColor()
                 }
                 else {
-                    self.rollLabel.textColor = UIColor.blackColor()
+                    self.rollLabel.textColor = UIColor.whiteColor()
                 }
                 
                 var yaw = motion.attitude.yaw
@@ -159,7 +172,7 @@ class ViewController: UIViewController {
                     self.yawLabel.textColor = UIColor.yellowColor()
                 }
                 else {
-                    self.yawLabel.textColor = UIColor.blackColor()
+                    self.yawLabel.textColor = UIColor.whiteColor()
                 }
                 
                 // ======== PITCH ======== //
@@ -198,7 +211,7 @@ class ViewController: UIViewController {
                     self.pitchLabel.textColor = UIColor.orangeColor()
                 }
                 else {
-                    self.pitchLabel.textColor = UIColor.blackColor()
+                    self.pitchLabel.textColor = UIColor.whiteColor()
                 }
                 
                 self.rollLabel.text = String(format: "Roll: %.0f\u{00B0}", rollDegrees)
@@ -259,10 +272,21 @@ class ViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         
+        rollLabel.textColor = UIColor.whiteColor()
+        pitchLabel.textColor = UIColor.whiteColor()
+        yawLabel.textColor = UIColor.whiteColor()
+        rollDiffLabel.textColor = UIColor.yellowColor()
+        pitchDiffLabel.textColor = UIColor.yellowColor()
+        yawDiffLabel.textColor = UIColor.yellowColor()
+        resultLabel.textColor = UIColor.greenColor()
+        mainView.backgroundColor = UIColor.blackColor()
+        
         resultLabel.hidden = true
+        rollLabel.hidden = true
+        yawLabel.hidden = true
+        pitchLabel.hidden = true
 
     }
     
