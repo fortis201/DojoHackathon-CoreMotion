@@ -135,13 +135,13 @@ class ViewController: UIViewController {
                 // ------------------------------------ end test --------------------------------------- //
                 
                 if abs(rollDiff) <= winMargin {
-                    self.rollLabel.textColor = UIColor.greenColor()
+                    self.rollDiffLabel.textColor = UIColor.greenColor()
                 }
                 else if abs(rollDiff) <= closeMargin {
-                    self.rollLabel.textColor = UIColor.yellowColor()
+                    self.rollDiffLabel.textColor = UIColor.yellowColor()
                 }
                 else {
-                    self.rollLabel.textColor = UIColor.whiteColor()
+                    self.rollDiffLabel.textColor = UIColor.redColor()
                 }
                 
                 var yaw = motion.attitude.yaw
@@ -172,13 +172,13 @@ class ViewController: UIViewController {
                 // ---------------------------------- end test ----------------------------------------- //
                 
                 if abs(yawDiff) <= winMargin {
-                    self.yawLabel.textColor = UIColor.greenColor()
+                    self.yawDiffLabel.textColor = UIColor.greenColor()
                 }
                 else if abs(yawDiff) <= closeMargin {
-                    self.yawLabel.textColor = UIColor.yellowColor()
+                    self.yawDiffLabel.textColor = UIColor.yellowColor()
                 }
                 else {
-                    self.yawLabel.textColor = UIColor.whiteColor()
+                    self.yawDiffLabel.textColor = UIColor.redColor()
                 }
                 
                 // ======== PITCH ======== //
@@ -211,13 +211,13 @@ class ViewController: UIViewController {
                 // ----------------------------------- end test ---------------------------------------- //
                 
                 if abs(pitchDiff) <= winMargin {
-                    self.pitchLabel.textColor = UIColor.greenColor()
+                    self.pitchDiffLabel.textColor = UIColor.greenColor()
                 }
                 else if abs(pitchDiff) <= closeMargin {
-                    self.pitchLabel.textColor = UIColor.orangeColor()
+                    self.pitchDiffLabel.textColor = UIColor.yellowColor()
                 }
                 else {
-                    self.pitchLabel.textColor = UIColor.whiteColor()
+                    self.pitchDiffLabel.textColor = UIColor.redColor()
                 }
                 
                 self.rollLabel.text = String(format: "Roll: %.0f\u{00B0}", rollDegrees)
@@ -243,23 +243,27 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        mainView.backgroundColor = UIColor.blackColor()
+        
+        resultLabel.textColor = UIColor.greenColor()
+        resultLabel.hidden = true
         
         rollLabel.textColor = UIColor.whiteColor()
         pitchLabel.textColor = UIColor.whiteColor()
         yawLabel.textColor = UIColor.whiteColor()
-        rollDiffLabel.textColor = UIColor.yellowColor()
-        pitchDiffLabel.textColor = UIColor.yellowColor()
-        yawDiffLabel.textColor = UIColor.yellowColor()
-        resultLabel.textColor = UIColor.greenColor()
-        mainView.backgroundColor = UIColor.blackColor()
         
-        rollDiffLabel.hidden = true
-        pitchDiffLabel.hidden = true
-        yawDiffLabel.hidden = true
-        resultLabel.hidden = true
         rollLabel.hidden = true
         yawLabel.hidden = true
         pitchLabel.hidden = true
+        
+        rollDiffLabel.textColor = UIColor.redColor()
+        pitchDiffLabel.textColor = UIColor.redColor()
+        yawDiffLabel.textColor = UIColor.redColor()
+
+        rollDiffLabel.hidden = true
+        pitchDiffLabel.hidden = true
+        yawDiffLabel.hidden = true
 
     }
     
